@@ -1,5 +1,5 @@
 # 🌐 COBNet  
-**Coordination of Benefits in U.S. Healthcare**
+**Coordination of Benefits in HealthCare**
 
 ---
 
