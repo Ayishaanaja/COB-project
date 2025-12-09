@@ -34,6 +34,9 @@ public class Claims {
 
     @Column(name = "Status", nullable = false, length = 50)
     private String status; // Submitted, Processed, Settled
+    
+    @Column(name = "IsNetwork" , nullable = false)
+    private boolean IsNetwork;
 
     // Claims ↔ InsurancePolicies (Many-to-Many via ClaimInsuranceMapping)
     @ManyToMany
