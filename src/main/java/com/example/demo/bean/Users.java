@@ -1,29 +1,58 @@
 package com.example.demo.bean;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
 @Entity
 @Table
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;   // Primary Key
+    private Long userId;
+
+    @Column(nullable = false, unique = true)
+    private String loginCredentials;  // hashed password
 
     @Column(nullable = false)
-    private String role;   // Patient, Provider, Insurer, Admin
+    private String role;       // Patient, Provider, Insurer, Admin
 
     @Column(nullable = false)
-    private String loginCredentials; // Could be username/password hash or token
+    private Long associatedEntityId;
 
-    @Column(nullable = false)
-    private Long associatedEntityId; 
-    // Links to PatientID, ProviderID, or InsurerID depending on role
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+
+	public String getUsername() {
+
+		return loginCredentials.split(":")[0];
+
+		}
+
+		public String getPassword() {
+
+		return loginCredentials.split(":")[1];
+		}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Long getAssociatedEntityId() {
+		return associatedEntityId;
+	}
+
+	public void setAssociatedEntityId(Long associatedEntityId) {
+		this.associatedEntityId = associatedEntityId;
+	}
 }
+
 

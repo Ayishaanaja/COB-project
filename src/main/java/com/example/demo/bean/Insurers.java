@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Entity
 @Table
-@Data
 public class Insurers {
 
     @Id
@@ -20,5 +19,37 @@ public class Insurers {
     private String contactInfo; 
 
     @Column(nullable = false, length = 50)
-    private String type;   
+    private String type;
+
+	public Long getInsurerId() {
+		return insurerId;
+	}
+
+	public void setInsurerId(Long insurerId) {
+		this.insurerId = insurerId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getContactInfo() {
+		return contactInfo;
+	}
+
+	public void setContactInfo(String contactInfo) {
+		this.contactInfo = contactInfo;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}   
 }

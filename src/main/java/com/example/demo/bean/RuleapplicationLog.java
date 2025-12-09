@@ -1,16 +1,12 @@
 package com.example.demo.bean;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class RuleapplicationLog {
 
     @Id
@@ -30,4 +26,44 @@ public class RuleapplicationLog {
 
     @Column(nullable = false)
     private LocalDateTime timestamp; // When the rule was applied
+
+	public Long getLogId() {
+		return logId;
+	}
+
+	public void setLogId(Long logId) {
+		this.logId = logId;
+	}
+
+	public Claims getClaim() {
+		return claim;
+	}
+
+	public void setClaim(Claims claim) {
+		this.claim = claim;
+	}
+
+	public COBRules getCobRule() {
+		return cobRule;
+	}
+
+	public void setCobRule(COBRules cobRule) {
+		this.cobRule = cobRule;
+	}
+
+	public String getAppliedResult() {
+		return appliedResult;
+	}
+
+	public void setAppliedResult(String appliedResult) {
+		this.appliedResult = appliedResult;
+	}
+
+	public LocalDateTime getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
 }

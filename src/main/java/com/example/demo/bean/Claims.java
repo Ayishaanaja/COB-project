@@ -1,13 +1,12 @@
 package com.example.demo.bean;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
 @Entity
 @Table(name = "Claims")
-@Data
+
 public class Claims {
 
     @Id
@@ -35,7 +34,87 @@ public class Claims {
     @Column(name = "IsNetwork", nullable = false)
     private boolean isNetwork;
 
-    // One Claim → Many ClaimInsuranceMappings
+    public Long getClaimId() {
+		return claimId;
+	}
+
+	public void setClaimId(Long claimId) {
+		this.claimId = claimId;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Providers getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Providers provider) {
+		this.provider = provider;
+	}
+
+	public LocalDate getClaimDate() {
+		return claimDate;
+	}
+
+	public void setClaimDate(LocalDate claimDate) {
+		this.claimDate = claimDate;
+	}
+
+	public Double getClaimAmount() {
+		return claimAmount;
+	}
+
+	public void setClaimAmount(Double claimAmount) {
+		this.claimAmount = claimAmount;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public boolean isNetwork() {
+		return isNetwork;
+	}
+
+	public void setNetwork(boolean isNetwork) {
+		this.isNetwork = isNetwork;
+	}
+
+	public List<ClaimInsuranceMapping> getClaimInsuranceMappings() {
+		return claimInsuranceMappings;
+	}
+
+	public void setClaimInsuranceMappings(List<ClaimInsuranceMapping> claimInsuranceMappings) {
+		this.claimInsuranceMappings = claimInsuranceMappings;
+	}
+
+	public Settlement getSettlement() {
+		return settlement;
+	}
+
+	public void setSettlement(Settlement settlement) {
+		this.settlement = settlement;
+	}
+
+	public List<RuleapplicationLog> getRuleApplicationLogs() {
+		return ruleApplicationLogs;
+	}
+
+	public void setRuleApplicationLogs(List<RuleapplicationLog> ruleApplicationLogs) {
+		this.ruleApplicationLogs = ruleApplicationLogs;
+	}
+
+	// One Claim → Many ClaimInsuranceMappings
     @OneToMany(mappedBy = "claim", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClaimInsuranceMapping> claimInsuranceMappings;
 

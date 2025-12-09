@@ -1,11 +1,9 @@
 package com.example.demo.bean;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "ClaimInsuranceMapping")
-@Data
 public class ClaimInsuranceMapping {
 
     @Id
@@ -35,4 +33,68 @@ public class ClaimInsuranceMapping {
 
     @Column(name = "AmountPaidByInsurer")
     private Double amountPaidByInsurer;
+
+	public Long getClaimInsuranceId() {
+		return claimInsuranceId;
+	}
+
+	public void setClaimInsuranceId(Long claimInsuranceId) {
+		this.claimInsuranceId = claimInsuranceId;
+	}
+
+	public Claims getClaim() {
+		return claim;
+	}
+
+	public void setClaim(Claims claim) {
+		this.claim = claim;
+	}
+
+	public Insurance_policies getInsurancePolicy() {
+		return insurancePolicy;
+	}
+
+	public void setInsurancePolicy(Insurance_policies insurancePolicy) {
+		this.insurancePolicy = insurancePolicy;
+	}
+
+	public Boolean getIsPrimary() {
+		return isPrimary;
+	}
+
+	public void setIsPrimary(Boolean isPrimary) {
+		this.isPrimary = isPrimary;
+	}
+
+	public Double getAppliedDeductible() {
+		return appliedDeductible;
+	}
+
+	public void setAppliedDeductible(Double appliedDeductible) {
+		this.appliedDeductible = appliedDeductible;
+	}
+
+	public Double getAppliedCoinsurance() {
+		return appliedCoinsurance;
+	}
+
+	public void setAppliedCoinsurance(Double appliedCoinsurance) {
+		this.appliedCoinsurance = appliedCoinsurance;
+	}
+
+	public Double getAppliedCopay() {
+		return appliedCopay;
+	}
+
+	public void setAppliedCopay(Double appliedCopay) {
+		this.appliedCopay = appliedCopay;
+	}
+
+	public Double getAmountPaidByInsurer() {
+		return amountPaidByInsurer;
+	}
+
+	public void setAmountPaidByInsurer(Double amountPaidByInsurer) {
+		this.amountPaidByInsurer = amountPaidByInsurer;
+	}
 }

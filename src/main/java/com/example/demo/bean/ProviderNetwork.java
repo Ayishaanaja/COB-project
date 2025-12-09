@@ -7,9 +7,6 @@ import lombok.AllArgsConstructor;
 
 @Entity
 @Table
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProviderNetwork {
 
     @Id
@@ -29,4 +26,44 @@ public class ProviderNetwork {
 
     @Column
     private Double negotiatedRate; // Optional: % discount or fixed negotiated rate
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Providers getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Providers provider) {
+		this.provider = provider;
+	}
+
+	public Insurers getInsurer() {
+		return insurer;
+	}
+
+	public void setInsurer(Insurers insurer) {
+		this.insurer = insurer;
+	}
+
+	public boolean isInNetwork() {
+		return inNetwork;
+	}
+
+	public void setInNetwork(boolean inNetwork) {
+		this.inNetwork = inNetwork;
+	}
+
+	public Double getNegotiatedRate() {
+		return negotiatedRate;
+	}
+
+	public void setNegotiatedRate(Double negotiatedRate) {
+		this.negotiatedRate = negotiatedRate;
+	}
 }

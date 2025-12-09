@@ -1,14 +1,12 @@
 package com.example.demo.bean;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.List;
 
 
 @Entity
 @Table(name = "COBRules")
-@Data
 public class COBRules {
 
     @Id
@@ -25,7 +23,47 @@ public class COBRules {
     @Column(name = "PriorityOrder")
     private Integer priorityOrder;
 
-    // One Rule → Many RuleApplicationLogs
+    public Long getRuleId() {
+		return ruleId;
+	}
+
+	public void setRuleId(Long ruleId) {
+		this.ruleId = ruleId;
+	}
+
+	public String getRuleName() {
+		return ruleName;
+	}
+
+	public void setRuleName(String ruleName) {
+		this.ruleName = ruleName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getPriorityOrder() {
+		return priorityOrder;
+	}
+
+	public void setPriorityOrder(Integer priorityOrder) {
+		this.priorityOrder = priorityOrder;
+	}
+
+	public List<RuleapplicationLog> getRuleApplicationLogs() {
+		return ruleApplicationLogs;
+	}
+
+	public void setRuleApplicationLogs(List<RuleapplicationLog> ruleApplicationLogs) {
+		this.ruleApplicationLogs = ruleApplicationLogs;
+	}
+
+	// One Rule → Many RuleApplicationLogs
     @OneToMany(mappedBy = "cobRule", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RuleapplicationLog> ruleApplicationLogs;
 }
