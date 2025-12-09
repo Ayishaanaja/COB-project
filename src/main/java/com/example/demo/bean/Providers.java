@@ -1,17 +1,5 @@
 package com.example.demo.bean;
 
-<<<<<<< HEAD
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
-@Entity
-@Table
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-=======
 
 import java.util.List;
 
@@ -21,27 +9,10 @@ import lombok.Data;
 @Entity
 @Table(name = "Providers")
 @Data
->>>>>>> 8fd3d8a3ee92c7de259c1eecfea8e030a019517e
 public class Providers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-    private Long providerId;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column
-    private String specialty;
-
-    @Column
-    private String contactInfo;
-
-    @Column
-    private String billingSystemId;
-}
-=======
     @Column(name = "ProviderID")
     private Long providerId;
 
@@ -62,4 +33,3 @@ public class Providers {
     private List<Claims> claims;
 
 }
->>>>>>> 8fd3d8a3ee92c7de259c1eecfea8e030a019517e
