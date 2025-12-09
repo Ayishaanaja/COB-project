@@ -73,12 +73,16 @@
 <!-- Login Form -->
 <div id="loginForm">
     <h2>Login</h2>
-    <form action="authenticate" method="post">
+	<form action="/patient/authenticate" method="post">
         <input type="text" name="username" placeholder="Enter Username" required>
         <input type="password" name="password" placeholder="Enter Password" required>
         <button type="submit">Login</button>
     </form>
 </div>
+<c:if test="${not empty error}">
+   <p style="color:red;">${error}</p>
+</c:if>
+
 
 <script>
     // Hide loader after 2 seconds and show login form

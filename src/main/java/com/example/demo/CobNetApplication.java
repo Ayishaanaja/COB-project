@@ -8,6 +8,7 @@ public class CobNetApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CobNetApplication.class, args);
+		
 	}
 
 }
