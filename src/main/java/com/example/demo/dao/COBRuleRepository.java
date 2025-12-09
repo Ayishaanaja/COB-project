@@ -1,8 +1,11 @@
 package com.example.demo.dao;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.bean.COBRules;
+
 @Repository
-public interface COBRuleRepository {
+public interface COBRuleRepository extends JpaRepository<COBRules,Long> {
 
 }
