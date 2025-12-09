@@ -4,9 +4,11 @@ package com.example.demo.bean;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "Providers")
+@Data
 public class Providers {
 
     @Id
@@ -30,47 +32,4 @@ public class Providers {
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Claims> claims;
 
-    // --- Constructors ---
-    public Providers() {}
-
-    // --- Getters and Setters ---
-    public Long getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(Long providerId) {
-        this.providerId = providerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public Long getBillingSystemId() {
-        return billingSystemId;
-    }
-
-    public void setBillingSystemId(Long billingSystemId) {
-        this.billingSystemId = billingSystemId;
-    }
 }
