@@ -1,6 +1,8 @@
 package com.example.demo.bean;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +25,10 @@ public class Providers {
 
     @Column(name = "BillingSystemID")
     private Long billingSystemId;
+    
+ // One Provider → Many Claims
+    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Claims> claims;
 
     // --- Constructors ---
     public Providers() {}
