@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 
+
 @Entity
 @Table(name = "COBRules")
 @Data
@@ -24,24 +25,9 @@ public class COBRules {
     @Column(name = "PriorityOrder")
     private Integer priorityOrder;
 
-    // Many-to-Many with Claims via RuleApplicationLog
-    @ManyToMany
-    @JoinTable(
-        name = "RuleApplicationLog",
-        joinColumns = @JoinColumn(name = "RuleID"),
-        inverseJoinColumns = @JoinColumn(name = "ClaimID")
-    )
-    private List<Claims> claims;
-
-    // --- Constructors ---
-    public COBRules() {}
-
-    public List<Claims> getClaims() {
-        return claims;
-    }
-
-    public void setClaims(List<Claims> claims) {
-        this.claims = claims;
-    }
+    // One Rule → Many RuleApplicationLogs
+    @OneToMany(mappedBy = "cobRule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RuleapplicationLog> ruleApplicationLogs;
 }
+
 

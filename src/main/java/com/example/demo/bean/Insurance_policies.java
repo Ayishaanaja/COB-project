@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
-
 @Entity
 @Table(name = "InsurancePolicies")
 @Data
@@ -16,12 +15,10 @@ public class Insurance_policies {
     @Column(name = "PolicyID")
     private Long policyId;
 
-    // FK → Patients (One Patient → Many Policies)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PatientID", nullable = false)
     private Patient patient;
 
-    // FK → Insurers (One Insurer → Many Policies)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "InsurerID", nullable = false)
     private Insurers insurer;
@@ -30,7 +27,7 @@ public class Insurance_policies {
     private String policyNumber;
 
     @Column(name = "CoverageType", nullable = false, length = 20)
-    private String coverageType; // Primary / Secondary
+    private String coverageType;
 
     @Column(name = "StartDate", nullable = false)
     private LocalDate startDate;
@@ -50,5 +47,7 @@ public class Insurance_policies {
     @Column(name = "Premium")
     private Double premium;
 
+    // One Policy → Many ClaimInsuranceMappings
+    @OneToMany(mappedBy = "insurancePolicy", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ClaimInsuranceMapping> claimInsuranceMappings;
 }
-

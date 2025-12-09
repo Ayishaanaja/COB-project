@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
-
 @Entity
 @Table(name = "Claims")
 @Data
@@ -16,12 +15,10 @@ public class Claims {
     @Column(name = "ClaimID")
     private Long claimId;
 
-    // FK → Patients
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PatientID", nullable = false)
     private Patient patient;
 
-    // FK → Providers
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ProviderID", nullable = false)
     private Providers provider;
@@ -33,21 +30,20 @@ public class Claims {
     private Double claimAmount;
 
     @Column(name = "Status", nullable = false, length = 50)
-    private String status; // Submitted, Processed, Settled
-    
-    @Column(name = "IsNetwork" , nullable = false)
-    private boolean IsNetwork;
+    private String status;
 
-    // Claims ↔ InsurancePolicies (Many-to-Many via ClaimInsuranceMapping)
-    @ManyToMany
-    @JoinTable(
-        name = "ClaimInsuranceMapping",
-        joinColumns = @JoinColumn(name = "ClaimID"),
-        inverseJoinColumns = @JoinColumn(name = "PolicyID")
-    )
-    private List<Insurance_policies> insurancePolicies;
+    @Column(name = "IsNetwork", nullable = false)
+    private boolean isNetwork;
 
-    // Claims ↔ Settlements (One-to-One)
+    // One Claim → Many ClaimInsuranceMappings
+    @OneToMany(mappedBy = "claim", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ClaimInsuranceMapping> claimInsuranceMappings;
+
     @OneToOne(mappedBy = "claim", cascade = CascadeType.ALL, orphanRemoval = true)
     private Settlement settlement;
+    
+ // One Claim → Many RuleApplicationLogs
+    @OneToMany(mappedBy = "claim", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RuleapplicationLog> ruleApplicationLogs;
+
 }

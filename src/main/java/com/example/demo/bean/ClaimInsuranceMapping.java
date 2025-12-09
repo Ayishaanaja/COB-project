@@ -13,12 +13,10 @@ public class ClaimInsuranceMapping {
     @Column(name = "ClaimInsuranceID")
     private Long claimInsuranceId;
 
-    // FK → Claims
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ClaimID", nullable = false)
     private Claims claim;
 
-    // FK → InsurancePolicies
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PolicyID", nullable = false)
     private Insurance_policies insurancePolicy;
@@ -38,4 +36,3 @@ public class ClaimInsuranceMapping {
     @Column(name = "AmountPaidByInsurer")
     private Double amountPaidByInsurer;
 }
-
