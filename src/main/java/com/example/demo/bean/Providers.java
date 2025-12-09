@@ -31,5 +31,9 @@ public class Providers {
  // One Provider → Many Claims
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Claims> claims;
+    
+    @OneToMany(mappedBy = "provider")
+    private List<ProviderNetwork> providerNetworks;
+
 
 }

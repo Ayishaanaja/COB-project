@@ -1,6 +1,7 @@
 package com.example.demo.bean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,5 +31,12 @@ public class Patient {
 
 	    @Column(nullable = false)
 	    private Double currentOutOfPocketSpent;
+	    
+	    @OneToMany(mappedBy = "patient")
+	    private List<Insurance_policies> insurancePolicies;
+
+	    @OneToMany(mappedBy = "patient")
+	    private List<Claims> claims;
+
 
 }
